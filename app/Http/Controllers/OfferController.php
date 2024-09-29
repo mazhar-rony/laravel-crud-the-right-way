@@ -47,7 +47,8 @@ class OfferController extends Controller
         $this->authorize('create', Offer::class);
 
         $offerService->store(
-            $request->validated()
+            $request->validated(),
+            $request->hasFile('image') ? $request->file('image') : null
         );
 
         return redirect()->back()->with(['success' => 'Offer creayed']);
