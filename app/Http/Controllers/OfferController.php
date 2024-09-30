@@ -57,9 +57,11 @@ class OfferController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Offer $offer)
     {
-        //
+        $offer->load(['author', 'categories', 'locations']);
+        
+        return view('offers.show', compact('offer'));
     }
 
     /**

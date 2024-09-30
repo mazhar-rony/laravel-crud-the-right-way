@@ -42,4 +42,11 @@ class Offer extends Model implements HasMedia
     {
         return $this->belongsToMany(Location::class);
     }
+
+    public function getImageUrlAttribute(): string
+    {
+        return $this->hasMedia()
+            ? $this->getFirstMediaUrl()
+            : self::PLACEHOLDER_IMAGE_PATH;
+    }
 }
