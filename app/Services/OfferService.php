@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Offer;
+use App\Filters\OfferFilter;
 use Illuminate\Support\Facades\DB;
 
 class OfferService
@@ -43,6 +44,18 @@ class OfferService
                     ->toMediaCollection();
             }
         }, 5);
+    }
+
+    public function get(array $queryParams = [])
+    {
+        $queryBuilder = Offer::with(['author', 'categories', 'locations'])->latest();
+
+        $offers = resolve(OfferFilter::class)->getResults([
+            'builder' => $queryBuilder,
+            'params' => $queryParams
+        ]);
+
+        return $offers;
     }
 
     public function destroy(Offer $offer)
