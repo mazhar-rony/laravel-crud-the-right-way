@@ -21,7 +21,7 @@ class OfferController extends Controller
         $categories = Category::orderBy('title')->get();
         $locations = Location::orderBy('title')->get();
 
-        $offers = Offer::with(['categories', 'locations'])->paginate(5);
+        $offers = Offer::with(['author', 'categories', 'locations'])->paginate(5);
 
         return view('offers.index', compact('offers', 'categories', 'locations'));
     }
@@ -60,31 +60,46 @@ class OfferController extends Controller
     public function show(Offer $offer)
     {
         $offer->load(['author', 'categories', 'locations']);
-        
+
         return view('offers.show', compact('offer'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Offer $offer)
     {
-        //
+        $this->authorize('update', $offer);
+
+        $categories = Category::orderBy('title')->get();
+        $locations = Location::orderBy('title')->get();
+
+        return view('offers.edit', compact('offer', 'categories', 'locations'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreOfferRequest $request, Offer $offer, OfferService $offerService)
     {
-        //
+        $this->authorize('update', $offer);
+
+        $offerService->update(
+            $offer,
+            $request->validated(),
+            $request->hasFile('image') ? $request->file('image') : null
+        );
+
+        return redirect()->back()->with(['success' => 'Offer Updated']);
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Offer $offer, OfferService $offerService)
     {
-        //
+        $offerService->destroy($offer);
+
+        return response('Offer deleted');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Constants\Role;
+use App\Models\Offer;
 use App\Models\User;
 
 class OfferPolicy
@@ -12,13 +13,18 @@ class OfferPolicy
         return $user->role === Role::USER;
     }
 
-    function viewAny(User $user)
+    public function viewAny(User $user)
     {
         return $user->role === Role::ADMIN;
     }
 
-    function viewMy(User $user) 
+    public function viewMy(User $user) 
     {
         return $user->role === Role::USER;
+    }
+
+    function update(User $user, Offer $offer)
+    {
+        return $user->role === Role::ADMIN || ($user->role === Role::USER && $user->id === $offer->author_id);
     }
 }

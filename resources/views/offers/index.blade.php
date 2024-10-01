@@ -139,15 +139,15 @@
                                 <td class="p-0">
                                     <div class="flex break-words items-center p-5">
                                         <span
-                                            {{-- class="text-darkBlueGray-400 font-heading">{{ getTitles($offer->categories) }}</span> --}}
-                                            class="text-darkBlueGray-400 font-heading">{{  implode(', ', $offer->categories->pluck('title')->toArray()) }}</span>
+                                            class="text-darkBlueGray-400 font-heading">{{ getTitles($offer->categories) }}</span>
+                                            {{-- class="text-darkBlueGray-400 font-heading">{{  implode(', ', $offer->categories->pluck('title')->toArray()) }}</span> --}}
                                     </div>
                                 </td>
                                 <td class="p-0">
                                     <div class="flex break-words items-center p-5">
                                         <span
-                                            {{-- class="text-darkBlueGray-400 font-heading">{{ getTitles($offer->locations) }}</span> --}}
-                                            class="text-darkBlueGray-400 font-heading">{{  implode(', ', $offer->locations->pluck('title')->toArray()) }}</span>
+                                            class="text-darkBlueGray-400 font-heading">{{ getTitles($offer->locations) }}</span>
+                                            {{-- class="text-darkBlueGray-400 font-heading">{{  implode(', ', $offer->locations->pluck('title')->toArray()) }}</span> --}}
                                     </div>
                                 </td>
                                 <td class="p-0">

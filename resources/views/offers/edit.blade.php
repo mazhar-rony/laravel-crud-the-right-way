@@ -27,7 +27,7 @@
                                     @enderror
                                 </div>
                                 <div class="flex flex-col">
-                                    <label class="leading-loose">Category<span class="text-red-400 text-sm">(required)</span></label>
+                                    <label class="leading-loose">Category <span class="text-red-400 text-sm">(required)</span></label>
                                     <select
                                         class="px-4 py-1 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                                         id="select-category"
@@ -45,7 +45,7 @@
                                     @enderror
                                 </div>
                                 <div class="flex flex-col">
-                                    <label class="leading-loose">Location<span class="text-red-400 text-sm">(required)</span></label>
+                                    <label class="leading-loose">Location <span class="text-red-400 text-sm">(required)</span></label>
                                     <select
                                         class="px-4 py-1 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
                                         id="select-location"
@@ -73,7 +73,7 @@
                                     @enderror
                                 </div>
                                 <div class="flex flex-col">
-                                    <label class="leading-loose">Description<span class="text-red-400 text-sm">(required)</span></label>
+                                    <label class="leading-loose">Description <span class="text-red-400 text-sm">(required)</span></label>
                                     <textarea name="description" rows="5" class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="Description">{{ old('description', $offer->description) }}</textarea>
                                     @error('description')
                                     <p class="text-red-700 p-2">{{ $message }}</p>
