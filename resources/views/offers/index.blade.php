@@ -8,6 +8,14 @@
                     <div class="w-full text-center md:text-left md:w-auto px-4 mb-2 md:mb-0">
                         <h2 class="text-3xl font-heading font-bold leading-relaxed">Offers</h2>
                     </div>
+                    @if(! auth()->user()->isAdmin())
+                        <div>
+                            <a href="{{ route('offers.create') }}"
+                                class="inline-block place-items-center md:max-w-max max-w-full w-full px-8 py-2 text-md text-center text-black font-normal bg-blue-200 hover:bg-blue-300 focus:ring-4 focus:ring-gray-200 rounded-full">
+                                Create offer
+                            </a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </section>

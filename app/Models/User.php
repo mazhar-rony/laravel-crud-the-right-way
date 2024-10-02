@@ -59,6 +59,6 @@ class User extends Authenticatable implements HasMedia
 
     public function isAdmin()
     {
-        return $this->role = Role::ADMIN;
+        return $this->role === Role::ADMIN;
     }
 }
